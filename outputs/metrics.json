@@ -1,0 +1,83 @@
+{
+  "site": {
+    "latitude": 52.284865998067886,
+    "longitude": -0.9396812228309679,
+    "crs": "EPSG:32630"
+  },
+  "pixel_size_m": 0.1,
+  "panels": {
+    "count": 18,
+    "kwp": 7.74,
+    "module_w": 430,
+    "module_size_m": [
+      1.72,
+      1.13
+    ],
+    "total_area_m2": 34.98
+  },
+  "facets": [
+    {
+      "facet": 1,
+      "slope_deg": 33.9,
+      "azimuth_deg": 222.6,
+      "facet_area_m2": 49.0,
+      "usable_area_m2": 36.1,
+      "panels": 7,
+      "orientation": "1.72x1.13",
+      "rms_m": 0.077
+    },
+    {
+      "facet": 3,
+      "slope_deg": 37.3,
+      "azimuth_deg": 42.4,
+      "facet_area_m2": 29.9,
+      "usable_area_m2": 33.1,
+      "panels": 8,
+      "orientation": "1.72x1.13",
+      "rms_m": 0.049
+    },
+    {
+      "facet": 4,
+      "slope_deg": 35.5,
+      "azimuth_deg": 42.4,
+      "facet_area_m2": 27.1,
+      "usable_area_m2": 23.3,
+      "panels": 3,
+      "orientation": "1.13x1.72",
+      "rms_m": 0.043
+    },
+    {
+      "facet": 8,
+      "slope_deg": 25.2,
+      "azimuth_deg": 310.5,
+      "facet_area_m2": 8.3,
+      "usable_area_m2": 3.1,
+      "panels": 0,
+      "orientation": "1.72x1.13",
+      "rms_m": 0.047
+    }
+  ],
+  "skipped_facets": [
+    {
+      "facet": 2,
+      "reason": "slope 6.3 deg outside [10.0,60.0]"
+    },
+    {
+      "facet": 5,
+      "reason": "slope 7.3 deg outside [10.0,60.0]"
+    },
+    {
+      "facet": 6,
+      "reason": "slope 3.7 deg outside [10.0,60.0]"
+    },
+    {
+      "facet": 7,
+      "reason": "slope 5.4 deg outside [10.0,60.0]"
+    }
+  ],
+  "obstructions": {
+    "chimneys": 7,
+    "dormers": 7,
+    "skylights": 9
+  }
+}

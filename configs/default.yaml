@@ -1,0 +1,50 @@
+# roofsolar pipeline configuration
+data_dir: data
+out_dir: outputs
+pixel_size: 0.1            # metres per pixel (from the GeoTIFF)
+mesh_step: 2               # reconstruction grid step in pixels (2 px = 0.2 m)
+
+preprocess:
+  denoise_sigma: 1.0       # light Gaussian denoise of the DSM [px]
+  roughness_window: 9      # window for the local-roughness (planarity) field [px]
+
+ground:                    # bare-earth estimation
+  downsample: 10           # block size for the 1 m working grid
+  window: 31               # low-percentile window in cells (31 m)
+  percentile: 10           # percentile used as the "ground" value
+
+buildings:
+  min_hag: 1.7             # min height above ground [m]
+  max_hag: 8.5             # max height above ground [m] (excludes trees)
+  max_roughness: 0.18      # roof planes are smooth
+  min_area_px: 400         # discard small blobs
+
+segmentation:              # sequential RANSAC plane extraction
+  thresh: 0.10             # inlier distance to plane [m]
+  min_inliers: 800
+  iters: 900
+  max_planes: 10
+  min_area_m2: 3.0
+  snap_azimuth_tol: 12.0   # azimuth regularisation tolerance [deg]
+  merge_angle: 7.0         # merge adjacent facets with similar normals [deg]
+  min_roof_slope: 0.0      # discard planes below this pitch (0 = keep all)
+
+obstructions:
+  chimney_min_h: 1.0       # residual height that makes a blob a chimney [m]
+  dormer_min_h: 0.35
+  object_max_area_m2: 20.0
+  min_object_area_m2: 0.4  # remove speckle
+  glass_v_min: 205         # glass/skylight brightness threshold
+  glass_sat_max: 55
+  glass_min_area_m2: 1.0
+  glass_close_px: 9
+
+panels:                    # standard module, flush mounted
+  panel_w: 1.72
+  panel_h: 1.13
+  gap: 0.03                # gap between adjacent panels [m]
+  setback: 0.30            # setback from ridges/eaves/edges [m]
+  clearance: 0.30          # clearance around obstructions [m]
+  min_slope: 10.0          # viable roof pitch range [deg]
+  max_slope: 60.0
+  wp_per_panel: 430        # module rated power [Wp]
